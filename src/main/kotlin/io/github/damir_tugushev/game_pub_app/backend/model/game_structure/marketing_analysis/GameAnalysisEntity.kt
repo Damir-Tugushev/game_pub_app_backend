@@ -25,12 +25,12 @@ class GameAnalysisEntity(
     @Column(name = "creation_date_analysis_document")
     override val creationDate: String,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_type_analysis", referencedColumnName = "id_type_analysis")
     override val type: GameAnalysisTypeEntity,
 
-    @OneToMany(cascade = [CascadeType.ALL], mappedBy = "gameAnalysis", fetch = FetchType.EAGER)
-    override val gameAnalysisData: Set<GameAnalysisDataEntity>,
+    @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "gameAnalysis", fetch = FetchType.EAGER)
+    override val gameAnalysisData: Set<GameAnalysisDataEntity> = setOf(),
 ) : GameAnalysis {
     override fun equals(other: Any?): Boolean {
         other ?: return false

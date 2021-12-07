@@ -25,11 +25,11 @@ class GameAnalysisDataEntity(
     @Column(name = "creation_date_data_analysis")
     override val creationDate: String,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_type_data_analysis", referencedColumnName = "id_type_data_analysis")
     override val type: GameAnalysisDataTypeEntity,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_version_analysis_document", referencedColumnName = "id_version_analysis_document")
     override val gameAnalysis: GameAnalysisEntity,
 ) : GameAnalysisData {

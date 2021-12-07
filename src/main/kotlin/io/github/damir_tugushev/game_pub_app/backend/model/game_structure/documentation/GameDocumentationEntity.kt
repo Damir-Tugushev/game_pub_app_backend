@@ -28,11 +28,11 @@ class GameDocumentationEntity (
     @Column(name = "name_documentation", length = 100, unique = true)
     override val name: String,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_type_documentation", referencedColumnName = "id_type_documentation")
     override val type: GameDocumentationTypeEntity,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_project", referencedColumnName = "id_project")
     override val gameProject: GameProjectEntity,
 ) : GameDocumentation {

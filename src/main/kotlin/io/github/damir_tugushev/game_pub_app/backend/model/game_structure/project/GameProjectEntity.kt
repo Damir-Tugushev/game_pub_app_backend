@@ -29,26 +29,26 @@ class GameProjectEntity(
     @Column(name = "name_project", length = 100, unique = true)
     override val name: String,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_stage", referencedColumnName = "id_stage")
     override val lifeCycleStage: LifeCycleStageEntity,
 
-    @OneToOne(cascade = [CascadeType.ALL])
+    @OneToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_version_plan_document", referencedColumnName = "id_version_plan_document")
-    override val gamePlan: GamePlanEntity?,
+    override val gamePlan: GamePlanEntity? = null,
 
-    @OneToOne(cascade = [CascadeType.ALL])
+    @OneToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_version_analysis_document", referencedColumnName = "id_version_analysis_document")
-    override val gameAnalysis: GameAnalysisEntity?,
+    override val gameAnalysis: GameAnalysisEntity? = null,
 
-    @OneToMany(cascade = [CascadeType.ALL], mappedBy = "gameProject", fetch = FetchType.EAGER)
-    override val gameDocumentations: Set<GameDocumentationEntity>,
+    @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "gameProject", fetch = FetchType.EAGER)
+    override val gameDocumentations: Set<GameDocumentationEntity> = setOf(),
 
-    @OneToMany(cascade = [CascadeType.ALL], mappedBy = "gameProject", fetch = FetchType.EAGER)
-    override val gameMaterials: Set<GameMaterialEntity>,
+    @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "gameProject", fetch = FetchType.EAGER)
+    override val gameMaterials: Set<GameMaterialEntity> = setOf(),
 
-    @ManyToMany(cascade = [CascadeType.ALL], mappedBy = "projects", fetch = FetchType.EAGER)
-    override val organizations: Set<OrganizationEntity>,
+    @ManyToMany(cascade = [CascadeType.MERGE], mappedBy = "projects", fetch = FetchType.EAGER)
+    override val organizations: Set<OrganizationEntity> = setOf(),
     ) : GameProject {
     override fun equals(other: Any?): Boolean {
         other ?: return false

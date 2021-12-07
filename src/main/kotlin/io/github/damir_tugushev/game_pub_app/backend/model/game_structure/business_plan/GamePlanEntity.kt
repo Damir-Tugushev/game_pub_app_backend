@@ -24,12 +24,12 @@ class GamePlanEntity(
     @Column(name = "creation_date_plan_document")
     override val creationDate: String,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_type_plan", referencedColumnName = "id_type_plan")
     override val type: GamePlanTypeEntity,
 
-    @OneToMany(cascade = [CascadeType.ALL], mappedBy = "gamePlan", fetch = FetchType.EAGER)
-    override val gamePlanData: Set<GamePlanDataEntity>,
+    @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "gamePlan", fetch = FetchType.EAGER)
+    override val gamePlanData: Set<GamePlanDataEntity> = setOf(),
 ) : GamePlan {
     override fun equals(other: Any?): Boolean {
         other ?: return false

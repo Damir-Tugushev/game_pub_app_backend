@@ -20,7 +20,7 @@ class OrganizationEntity(
     @Column(name = "description_organization", length = 1000)
     override var description: String,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_type_organization", referencedColumnName = "id_type_organization")
     override var organizationType: OrganizationTypeEntity,
 
@@ -30,20 +30,20 @@ class OrganizationEntity(
     @Column(name = "name_organization", length = 100, unique = true)
     override var name: String,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_head_organization", referencedColumnName = "id_organization")
     override var headOrganization: OrganizationEntity? = null,
 
-    @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @ManyToMany(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinTable(
         name = "organization_to_game_project",
         joinColumns = [JoinColumn(name = "id_organization")],
         inverseJoinColumns = [JoinColumn(name = "id_project")],
     )
-    override val projects: Set<GameProjectEntity>,
+    override val projects: Set<GameProjectEntity> = setOf(),
 
-    @OneToMany(cascade = [CascadeType.ALL], mappedBy = "organization", fetch = FetchType.EAGER)
-    override val employees: Set<EmployeeEntity>,
+    @OneToMany(cascade = [CascadeType.MERGE], mappedBy = "organization", fetch = FetchType.EAGER)
+    override val employees: Set<EmployeeEntity> = setOf(),
 ) : Organization {
     override fun equals(other: Any?): Boolean {
         other ?: return false

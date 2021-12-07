@@ -19,15 +19,15 @@ class EmployeeEntity(
     @Column(name = "description_employee", length = 1000)
     override val description: String,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_type_employee", referencedColumnName = "id_type_employee")
     override var type: EmployeeTypeEntity,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
+    @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_organization", referencedColumnName = "id_organization")
     override var organization: OrganizationEntity,
 
-    @OneToOne(cascade = [CascadeType.ALL])
+    @OneToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "login_user", referencedColumnName = "login_user")
     override var user: UserEntity,
 
