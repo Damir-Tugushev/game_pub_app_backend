@@ -1,4 +1,4 @@
-package io.github.damir_tugushev.game_pub_app_backend
+package io.github.damir_tugushev.game_pub_app.backend
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
