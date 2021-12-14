@@ -28,7 +28,9 @@ repositories {
 
 dependencies {
     // Domain layer
-    implementation("com.github.Damir-Tugushev:game_pub_app_domain:main-SNAPSHOT")
+    implementation("com.github.Damir-Tugushev:game_pub_app_domain:main-SNAPSHOT") {
+        isChanging = true
+    }
 
     // Kotlin
     implementation(kotlin("reflect"))
@@ -41,10 +43,13 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-security")
     runtimeOnly("org.postgresql:postgresql")
 
     // Third-Party
-    implementation("io.github.microutils:kotlin-logging-jvm:2.0.11")
+    implementation("io.github.microutils:kotlin-logging-jvm:2.1.0")
+    implementation("io.jsonwebtoken:jjwt:0.9.1")
+    implementation("org.bouncycastle:bcprov-jdk15on:1.69")
 
     // Testing
     testImplementation("org.springframework.boot:spring-boot-starter-test")
