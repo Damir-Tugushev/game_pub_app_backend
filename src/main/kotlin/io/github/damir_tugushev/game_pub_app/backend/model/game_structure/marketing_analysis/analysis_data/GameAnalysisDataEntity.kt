@@ -20,10 +20,10 @@ class GameAnalysisDataEntity(
     override val description: String,
 
     @Column(name = "content_data_analysis")
-    override val contentUri: String,
+    override val contentUri: String = "",
 
     @Column(name = "creation_date_data_analysis")
-    override val creationDate: String,
+    override val creationDate: String = "",
 
     @ManyToOne(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
     @JoinColumn(name = "id_type_data_analysis", referencedColumnName = "id_type_data_analysis")

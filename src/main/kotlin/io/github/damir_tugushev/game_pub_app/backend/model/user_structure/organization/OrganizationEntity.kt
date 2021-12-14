@@ -25,7 +25,7 @@ class OrganizationEntity(
     override var organizationType: OrganizationTypeEntity,
 
     @Column(name = "creation_date_organization")
-    override var creationDate: String,
+    override var creationDate: String = "",
 
     @Column(name = "name_organization", length = 100, unique = true)
     override var name: String,

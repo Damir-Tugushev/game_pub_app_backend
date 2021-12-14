@@ -20,10 +20,10 @@ class GameMaterialEntity (
     override val description: String,
 
     @Column(name = "content_material")
-    override val contentUri: String,
+    override val contentUri: String = "",
 
     @Column(name = "creation_date_material")
-    override val creationDate: String,
+    override val creationDate: String = "",
 
     @Column(name = "name_material", length = 100, unique = true)
     override val name: String,

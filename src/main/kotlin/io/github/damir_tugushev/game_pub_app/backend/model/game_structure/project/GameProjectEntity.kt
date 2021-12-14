@@ -24,7 +24,7 @@ class GameProjectEntity(
     override val description: String,
 
     @Column(name = "creation_date_project")
-    override val creationDate: String,
+    override val creationDate: String = "",
 
     @Column(name = "name_project", length = 100, unique = true)
     override val name: String,

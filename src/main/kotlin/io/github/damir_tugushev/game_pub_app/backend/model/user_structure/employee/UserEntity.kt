@@ -21,7 +21,7 @@ class UserEntity(
     override var passwordEncrypted: String,
 
     @Column(name = "creation_date_user")
-    override var creationDate: String,
+    override var creationDate: String = "",
 ) : User {
     override fun equals(other: Any?): Boolean {
         other ?: return false
