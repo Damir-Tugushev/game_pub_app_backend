@@ -59,12 +59,10 @@ class DataInitializer(
         initAllDocuments()
 
         organizationRepository.saveAll(initOrganizations(
-            Pair(null, organizationTypeRepository.getById(2)),
-            Pair(null, organizationTypeRepository.getById(2)),
-            Pair(null, organizationTypeRepository.getById(2)),
-//            Pair(organizationRepository.getById(3), organizationTypeRepository.getById(1)),
+            Triple(null, organizationTypeRepository.getById(2), gameProjectRepository.getById(1)),
+            Triple(null, organizationTypeRepository.getById(2), gameProjectRepository.getById(3)),
+            Triple(null, organizationTypeRepository.getById(2), gameProjectRepository.getById(2)),
         ))
-
         organizationRepository.save(OrganizationEntity(
             headOrganization = organizationRepository.getById(3),
             organizationType = organizationTypeRepository.getById(1),
@@ -74,7 +72,7 @@ class DataInitializer(
                     "game Minecraft. The studio inherited its name from a previous video game venture Persson had " +
                     "left two years prior. Following the game's release, Persson, in conjunction with Jakob Porsér, " +
                     "incorporated the business as Mojang AB in late 2010 and hired Carl Manneh as the company's " +
-                    "chief executive officer. Other early hires included Daniel Kaplan and Jens Bergensten."
+                    "chief executive officer. Other early hires included Daniel Kaplan and Jens Bergensten.",
             ),
         )
 
